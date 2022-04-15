@@ -49,7 +49,7 @@ if (is_valid_session() && is_allowed_vente_id($numero)) {
     <div class="col-md-4">
       <div id="ticket" class="panel panel-info" >
         <div class="panel-heading">
-          <h3 class="panel-title" >Ticket de caisse: &#8470;
+          <h3 class="panel-title" >Ticket de caisse N° 
             <span id="num_vente"><?= $numero_vente; ?></span>
             <span class ="badge" id="recaptotal" style="float:right;">0 €</span>
           </h3>
@@ -64,11 +64,11 @@ if (is_valid_session() && is_allowed_vente_id($numero)) {
 
         <div class="panel-body" id="ticket">
           <?php if (is_allowed_saisie_date() && is_allowed_edit_date()) { ?>
-            <label for="date">Date de la vente:</label>
+            <label for="date">Date de la vente :</label>
             <input type="date" id="date" name="antidate" value="<?= date('Y-m-d'); ?>">
           <?php } ?>
           <ul class="list-group" id="transaction">
-            <!-- Remplis via JavaScript voir script de la page -->
+            <!-- Rempli via JavaScript voir script de la page -->
           </ul>
           <ul id="total"></ul>
         </div>
@@ -78,22 +78,22 @@ if (is_valid_session() && is_allowed_vente_id($numero)) {
           <br>
           <button type="button" class="btn btn-warning" data-toggle="collapse"
                   data-target="#collapserendu" aria-expanded="false"
-                  aria-controls="collapserendu">Rendu Monnaie</button>
+                  aria-controls="collapserendu">Rendu monnaie</button>
           <div class="collapse" id="collapserendu">
             <ul class="list-group list-group-item-warning">
               <li class="list-group-item">
-                Somme due:
+                Somme due
                 <input type="text" class="form-control" placeholder="€"
                        name="somme" id="somme" disabled>
               </li>
               <li class="list-group-item list-group-item-success">
-                <b>Réglement</b>
+                <b>Règlement</b>
                 <input type="text" class="form-control" placeholder="€"
                        name="reglement" id="reglement"
                        oninput="update_rendu()">
               </li>
               <li class="list-group-item list-group-item-danger">
-                <b>A rendre</b>
+                <b>À rendre</b>
                 <input type="text" class="form-control" placeholder="€"
                        name="difference" id="difference" disabled>
               </li>
@@ -107,13 +107,13 @@ if (is_valid_session() && is_allowed_vente_id($numero)) {
       <div class="panel panel-info">
         <div class="panel-heading">
           <h3 class="panel-title">
-            <label id="nom_objet">Objet:</label>
+            <label id="nom_objet">Objet</label>
           </h3>
         </div>
 
         <div class="panel-body" id="panelcalc">
           <?php if (ventes_lots()) { ?>
-            <label id="labellot" for="typeVente">Vente à:</label>
+            <label id="labellot" for="typeVente">Vente à</label>
               <input class="make-switch" id="typeVente" type="checkbox"
                      name="my-checkbox" checked
                      data-on-text="l'unité"
@@ -121,17 +121,17 @@ if (is_valid_session() && is_allowed_vente_id($numero)) {
                      data-size="small">
           <?php } ?>
 
-          <label id="labelquantite" for="quantite">Quantité:</label>
+          <label id="labelquantite" for="quantite">Quantité</label>
             <input type="number" class="form-control"
                    placeholder="Quantité" id="quantite" min="0"
                    onfocus="fokus(this)">
 
-          <label id="labelprix" for="prix">Prix unitaire:</label>
+          <label id="labelprix" for="prix">Prix unitaire</label>
             <input type="text" class="form-control"
                    placeholder="€" id="prix" onfocus="fokus(this)">
 
           <?php if (pesees_ventes()) { ?>
-          <label id="labelmasse" for="masse">Masse unitaire:</label>
+          <label id="labelmasse" for="masse">Masse unitaire</label>
               <input type="text" class="form-control" placeholder="Kgs."
                      id="masse" onfocus="fokus(this)">
           <?php } ?>
@@ -170,7 +170,7 @@ if (is_valid_session() && is_allowed_vente_id($numero)) {
     <div class="col-md-4" >
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h3 class="panel-title">Type d'objet:</h3>
+          <h3 class="panel-title">Type d’objet</h3>
         </div>
         <div class="panel-body">
           <?php
@@ -197,14 +197,14 @@ if (is_valid_session() && is_allowed_vente_id($numero)) {
                 <ul class="dropdown-menu" role="menu">
                   <li style="font-size:18px">
                     <a href="#" onclick='update_state({
-                          type: <?= json_encode($d, JSON_NUMERIC_CHECK) ?> });
+                          type : <?= json_encode($d, JSON_NUMERIC_CHECK) ?> });
                         return false;'><?= $d['nom'] ?></a>
                   </li>
                   <li class='divider'></li>
                   <?php foreach ($objs as $objet) { ?>
                     <li style='font-size:18px'>
                       <a href="#" onclick='update_state({
-                            type: <?= json_encode($d, JSON_NUMERIC_CHECK) ?>,
+			    type:<?= json_encode($d, JSON_NUMERIC_CHECK) ?>,
                             objet: <?= json_encode($objet, JSON_NUMERIC_CHECK) ?> });
                           return false;'><?= $objet['nom'] ?></a>
                     </li>
@@ -218,7 +218,7 @@ if (is_valid_session() && is_allowed_vente_id($numero)) {
 
       <div class="panel panel-info">
         <div class="panel-body">
-          <label>Moyen de paiement:</label>
+          <label>Moyen de paiement</label>
           <div id="moyens" class="btn-group" data-toggle="buttons">
             <?php foreach ($moyens_paiement as $moyen) { ?>
               <label class="btn ors_btn_pay btn-default <?= $moyen['id'] === 1 ? 'active' : '' ?>"
